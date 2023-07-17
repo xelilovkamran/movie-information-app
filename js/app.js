@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 window.addEventListener("scroll", () => {
   if (
     document.body.offsetHeight + window.scrollY >=
-    document.body.scrollHeight - 20
+    document.body.scrollHeight - 5
   ) {
     loadMoreResult();
   }
