@@ -73,7 +73,6 @@ function createCard(movie) {
 }
 
 async function showResult(url) {
-  console.log(url);
   var data = await fetchData(url);
   if (data && data.results) {
     data.results.map(async (movie) => {
