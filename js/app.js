@@ -74,6 +74,7 @@ function createCard(movie) {
 
 async function showResult(url) {
   var data = await fetchData(url);
+  console.log(data);
   if (data && data.results) {
     data.results.map(async (movie) => {
       const { poster_path: posterPath } = movie;
@@ -85,6 +86,7 @@ async function showResult(url) {
       };
     });
   }
+  console.log(document.querySelectorAll(".card").length);
 }
 
 async function loadMoreResult() {
@@ -93,6 +95,7 @@ async function loadMoreResult() {
   const searchUrl = searchInput.value
     ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}&page=${pageNumber}`
     : `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}&page=${pageNumber}`;
+
   await showResult(searchUrl);
 }
 
@@ -106,7 +109,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 window.addEventListener("scroll", () => {
   if (
     document.body.offsetHeight + window.scrollY >=
-    document.body.scrollHeight - 5
+      document.body.scrollHeight - 10 &&
+    document.querySelectorAll(".card").length === pageNumber * 20
   ) {
     loadMoreResult();
   }
