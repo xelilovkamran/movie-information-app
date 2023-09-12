@@ -74,7 +74,6 @@ function createCard(movie) {
 
 async function showResult(url) {
   var data = await fetchData(url);
-  console.log(data);
   if (data && data.results) {
     data.results.map(async (movie) => {
       const { poster_path: posterPath } = movie;
@@ -86,7 +85,6 @@ async function showResult(url) {
       };
     });
   }
-  console.log(document.querySelectorAll(".card").length);
 }
 
 async function loadMoreResult() {
